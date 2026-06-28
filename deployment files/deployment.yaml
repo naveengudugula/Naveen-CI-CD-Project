@@ -1,29 +1,27 @@
----
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
-  name: fb-deploy 
-  labels:
-    app: facebook
-    env: lab 
+  name: naveen-app
 
 spec:
+  replicas: 2
+
   selector:
     matchLabels:
-      app: facebook 
-  replicas: 2  
+      app: naveen-app
+
   template:
     metadata:
-      name: fb-pod 
       labels:
-        app: facebook
-        env: lab
-        tier: frontend 
-        version: v1_AC
+        app: naveen-app
+
     spec:
       containers:
-        - name: fb-pod-cont
-          image: devopshubg333/batch16d:5
-          ports:
-            - containerPort: 8080
 
+      - name: naveen-app
+
+        image: naveengudugula/naveen-ci-cd:v1
+
+        ports:
+        - containerPort: 8080
